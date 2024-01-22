@@ -19,7 +19,7 @@ export default function OrdersPage({ orders }: Props) {
                     <title>Bitpay | Ordenes</title>
                     <meta
                         name="description"
-                        content="Bitpay realizar cripto pago"
+                        content="Bitpay ver todas las órdenes"
                     />
                 </Head>
                 <section className="flex flex-col items-center justify-center md:mt-32 m-4 md:m-auto pb-4 max-w-[600px]">
