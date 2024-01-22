@@ -1,5 +1,12 @@
 Bitpay challenge
 
+Correr el proyecto en local:
+
+1 - Descargar/Clonar el proyecto  
+2 - Correr el comando npm install para construir los modulos de node e instalar dependencias  
+3 - Correr el comando npm run dev  
+4 - Ingresar a la url localhost:3000 en el navegador para utilizar
+
 NOTA:
 
 A la ruta de órdenes solo podemos llegar utilizando la URL ya que no estaba especificado en el diseño no quise romper el diseño de figma!
@@ -12,7 +19,7 @@ Rutas de la aplicación:
 2 - "/orders" => Bitpay | Ordenes - Listado de todas las órdenes realizadas (incluye Links para navegar al pago de la órden).  
 3 - "/order/{identifier} => Bitpay | Orden - Pantalla de pago con información detallada para realizar el envio de crypto.  
 4 - "/order/failed" => Bitpay | Orden fallida - Pantalla de órden fallida o expirada.  
-5 - "/order/completed" => Bitpay | Orden exitosa - Pantalla de órden completa o exitosa.  
+5 - "/order/completed" => Bitpay | Orden exitosa - Pantalla de órden completa o exitosa.
 
 Funcionamiento de cobros:
 

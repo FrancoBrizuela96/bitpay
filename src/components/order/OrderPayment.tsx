@@ -59,7 +59,7 @@ export const OrderPayment = ({ order, currency }: Props) => {
                 {paymentMethodSelected === "Smart QR" ? (
                     <QRCode
                         className="h-48 w-48 shadow-2xl p-3 rounded-[10px]"
-                        value={`${order.currency_id}:${order.address}-amount:${order.crypto_amount}`}
+                        value={`${order.currency_id}:${order.address}?amount=${order.crypto_amount}`}
                     />
                 ) : (
                     <button
