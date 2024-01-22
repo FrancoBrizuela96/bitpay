@@ -15,7 +15,7 @@ export const CreatePaymentContextProvider: React.FC<{
     children: React.ReactNode;
 }> = ({ children }) => {
     const [formValues, setFormValues] = useState<CreatePaymentForm>({
-        amount: 0,
+        amount: "",
         currency: {
             blockchain: "",
             image: "",
@@ -31,7 +31,7 @@ export const CreatePaymentContextProvider: React.FC<{
 
     const isFormValid = useMemo(() => {
         if (
-            formValues.amount > 0 &&
+            Number(formValues.amount) > 0 &&
             formValues.currency &&
             formValues.description
         ) {
@@ -41,7 +41,7 @@ export const CreatePaymentContextProvider: React.FC<{
         return false;
     }, [formValues]);
 
-    const updateAmount = (value: number) => {
+    const updateAmount = (value: string) => {
         setFormValues((prev) => ({
             ...prev,
             amount: value,

@@ -11,14 +11,14 @@ export interface CreatePaymentContextProps {
     isFormValid: boolean;
     isLoading: boolean;
     formValues: CreatePaymentForm;
-    updateAmount: (value: number) => void;
+    updateAmount: (value: string) => void;
     updateDescription: (description: string) => void;
     updateCurrency: (currency: Currency) => void;
     createOrder: () => Promise<void>;
 }
 
 export interface CreatePaymentForm {
-    amount: number;
+    amount: string;
     currency: Currency | null;
     description: string;
 }

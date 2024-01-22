@@ -18,9 +18,9 @@ const useCountdown = ({ endDate }: Props): CountdownHookResult => {
         const target = new Date(endDate);
         const difference = target.getTime() - now.getTime();
 
+        // Timer finished
         if (difference <= 0) {
-            // If the target date has passed, set the timeRemaining to 0
-            router.reload();
+            // router.push("/order/failed");
             return 0;
         }
 
@@ -30,7 +30,7 @@ const useCountdown = ({ endDate }: Props): CountdownHookResult => {
 
     useEffect(() => {
         setTimeRemaining(calculateTimeRemaining());
-        // Update the timeRemaining every second
+
         const interval = setInterval(() => {
             setTimeRemaining(calculateTimeRemaining());
         }, 1000);

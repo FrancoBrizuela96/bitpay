@@ -25,8 +25,8 @@ export const CreatePaymentBody = ({ currencies }: Props) => {
                         Importe a pagar
                     </label>
                     <input
-                        value={String(formValues.amount)}
-                        onChange={(e) => updateAmount(Number(e.target.value))}
+                        value={formValues.amount}
+                        onChange={(e) => updateAmount(e.target.value)}
                         name="amount"
                         className="px-3 py-4 rounded-md border border-slate-200 items-center gap-2 mt-1"
                         type="number"

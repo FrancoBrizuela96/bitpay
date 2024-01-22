@@ -27,7 +27,7 @@ export const CreateWeb3PaymentContextProvider: React.FC<{
 
                 const accounts = await web3.eth.getAccounts();
 
-                // Transform human readable amount to a hex precised amount
+                // Transform wei amount to hex usign JS -> web3.utils.toHex(web3.utils.toWei()) was creating a huge different number!
                 const valueToSend = parseInt(
                     web3.utils.toWei(amountToSend, "ether")
                 ).toString(16);
@@ -47,8 +47,6 @@ export const CreateWeb3PaymentContextProvider: React.FC<{
                         console.log(`Transaction hash: ${txHash}`)
                     )
                     .catch((error: any) => console.log(error));
-
-                console.log("Transaction Result:", result);
             } catch (error) {
                 console.log(error);
             }
