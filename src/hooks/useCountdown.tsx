@@ -37,7 +37,7 @@ const useCountdown = ({ endDate }: Props): CountdownHookResult => {
 
         // Clean up the interval when the component is unmounted
         return () => clearInterval(interval);
-    }, [endDate]);
+    }, [endDate, calculateTimeRemaining]);
 
     const formatTime = (time: number): string => {
         const hours = Math.floor(time / 3600);

@@ -28,7 +28,7 @@ export const Dropdown = ({ options, title, className }: Props) => {
 
     useEffect(() => {
         const newCurrencies = filterCurrencies({
-            amount: formValues.amount,
+            amount: Number(formValues.amount),
             currencies: options,
             searchText,
         });
@@ -42,11 +42,11 @@ export const Dropdown = ({ options, title, className }: Props) => {
         }
 
         setCurrencies(newCurrencies);
-    }, [searchText, formValues.amount]);
+    }, [searchText, formValues.amount, formValues.currency?.symbol]);
 
     useEffect(() => {
         updateCurrency(currencies[0]);
-    }, []);
+    }, [currencies, updateCurrency]);
 
     if (!isDropdownOpen) {
         return (

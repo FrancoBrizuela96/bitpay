@@ -27,7 +27,7 @@ export default function OrderPage({ order, currency }: Props) {
         ) {
             router.push(currentOrder.url_ok);
         }
-    }, [currentOrder]);
+    }, [currentOrder, router]);
 
     const handleWebSocketMessage = (message: string) => {
         const updatedOrder = JSON.parse(message);
