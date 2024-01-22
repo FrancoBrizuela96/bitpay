@@ -17,7 +17,8 @@ export default function Home({ currencies }: Props) {
                     content="Genera tus pagos con criptomonedas"
                 />
             </Head>
-            <main className={`flex flex-col items-center justify-between p-24`}>
+            <main
+                className={`flex flex-col items-center justify-between p-4 sm:p-24`}>
                 {currencies ? (
                     <CreatePaymentContainer currencies={currencies} />
                 ) : (
