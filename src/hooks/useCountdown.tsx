@@ -1,3 +1,4 @@
+import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
 
 interface Props {
@@ -10,6 +11,7 @@ interface CountdownHookResult {
 
 const useCountdown = ({ endDate }: Props): CountdownHookResult => {
     const [timeRemaining, setTimeRemaining] = useState<number>(0);
+    const router = useRouter();
 
     const calculateTimeRemaining = (): number => {
         const now = new Date();
@@ -18,6 +20,7 @@ const useCountdown = ({ endDate }: Props): CountdownHookResult => {
 
         if (difference <= 0) {
             // If the target date has passed, set the timeRemaining to 0
+            router.reload();
             return 0;
         }
 
