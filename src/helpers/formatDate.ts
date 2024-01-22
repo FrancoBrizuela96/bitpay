@@ -1,5 +1,4 @@
 export const formatDate = (date: string) => {
-    console.log(date);
     const newDate = new Date(date);
 
     // Using UTC date for consistency between server and client components on production environment
