@@ -19,19 +19,20 @@ export default function OrderPage({ order, currency }: Props) {
     const { identifier } = router.query;
 
     useEffect(() => {
-        if (currentOrder.status === "OC" || currentOrder.status === "EX") {
-            router.push(currentOrder.url_ko);
-        } else if (
-            currentOrder.status === "CO" ||
-            currentOrder.status === "AC"
-        ) {
-            router.push(currentOrder.url_ok);
+        if (currentOrder) {
+            if (currentOrder.status === "OC" || currentOrder.status === "EX") {
+                router.push(currentOrder.url_ko ?? "/order/failed");
+            } else if (
+                currentOrder.status === "CO" ||
+                currentOrder.status === "AC"
+            ) {
+                router.push(currentOrder.url_ok ?? "/order/completed");
+            }
         }
     }, [currentOrder, router]);
 
     const handleWebSocketMessage = (message: string) => {
         const updatedOrder = JSON.parse(message);
-        console.log(updatedOrder);
         setCurrentOrder(updatedOrder);
     };
 

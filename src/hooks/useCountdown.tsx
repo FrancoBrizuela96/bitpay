@@ -20,7 +20,7 @@ const useCountdown = ({ endDate }: Props): CountdownHookResult => {
 
         // Timer finished
         if (difference <= 0) {
-            // router.push("/order/failed");
+            router.push("/order/failed");
             return 0;
         }
 
