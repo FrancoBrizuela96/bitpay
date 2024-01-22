@@ -42,7 +42,7 @@ export const Dropdown = ({ options, title, className }: Props) => {
         }
 
         setCurrencies(newCurrencies);
-    }, [searchText, formValues.amount, formValues.currency?.symbol]);
+    }, [searchText, formValues.amount]);
 
     useEffect(() => {
         updateCurrency(currencies[0]);

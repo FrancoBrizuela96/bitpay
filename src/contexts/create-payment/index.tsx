@@ -5,7 +5,13 @@ import {
     Currency,
 } from "@/interfaces";
 import { useRouter } from "next/router";
-import React, { createContext, useContext, useMemo, useState } from "react";
+import React, {
+    createContext,
+    useCallback,
+    useContext,
+    useMemo,
+    useState,
+} from "react";
 
 const CreatePaymentContext = createContext<
     CreatePaymentContextProps | undefined
@@ -41,26 +47,26 @@ export const CreatePaymentContextProvider: React.FC<{
         return false;
     }, [formValues]);
 
-    const updateAmount = (value: string) => {
+    const updateAmount = useCallback((value: string) => {
         setFormValues((prev) => ({
             ...prev,
             amount: value,
         }));
-    };
+    }, []);
 
-    const updateDescription = (description: string) => {
+    const updateDescription = useCallback((description: string) => {
         setFormValues((prev) => ({
             ...prev,
             description,
         }));
-    };
+    }, []);
 
-    const updateCurrency = (currency: Currency) => {
+    const updateCurrency = useCallback((currency: Currency) => {
         setFormValues((prev) => ({
             ...prev,
             currency,
         }));
-    };
+    }, []);
 
     const createOrder = async () => {
         const { amount, currency, description } = formValues;
