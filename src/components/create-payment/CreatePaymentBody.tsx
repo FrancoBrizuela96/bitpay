@@ -66,7 +66,7 @@ export const CreatePaymentBody = ({ currencies }: Props) => {
                     type="button"
                     className="px-6 py-[18px] transition-all bg-blue-700 rounded-md text-white font-semibold leading-tight disabled:bg-blue-200"
                     disabled={!isFormValid || isLoading}>
-                    {isLoading ? "Cargando..." : "Continuar"}
+                    {isLoading ? "Generando orden" : "Continuar"}
                 </button>
             </div>
         </div>
