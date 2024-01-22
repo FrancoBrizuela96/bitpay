@@ -11,7 +11,7 @@ interface Props {
 
 export default function OrdersPage({ orders }: Props) {
     const router = useRouter();
-    console.log(orders);
+
     if (!orders)
         return (
             <>
