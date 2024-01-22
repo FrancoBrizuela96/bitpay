@@ -46,7 +46,7 @@ export const Dropdown = ({ options, title, className }: Props) => {
 
     useEffect(() => {
         updateCurrency(currencies[0]);
-    }, [currencies, updateCurrency]);
+    }, [updateCurrency]);
 
     if (!isDropdownOpen) {
         return (

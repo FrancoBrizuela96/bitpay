@@ -44,7 +44,7 @@ export default function OrderPage({ order, currency }: Props) {
     return (
         <>
             <Head>
-                <title>Bitpay | Order</title>
+                <title>Bitpay | Orden</title>
                 <meta
                     name="description"
                     content="Bitpay realizar cripto pago"
