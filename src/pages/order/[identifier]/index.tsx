@@ -1,5 +1,6 @@
 import { OrderPayment } from "@/components/order/OrderPayment";
 import { OrderSummary } from "@/components/order/OrderSummary";
+import { CreateWeb3PaymentContextProvider } from "@/contexts/order-web3-payment";
 import useWebSocket from "@/hooks/useWebSocket";
 import { Currency, DetailedOrder } from "@/interfaces";
 import { GetServerSidePropsContext } from "next";
@@ -48,12 +49,20 @@ export default function OrderPage({ order, currency }: Props) {
                     content="Bitpay realizar cripto pago"
                 />
             </Head>
-            <section className="flex items-center justify-center md:mt-32 m-4 md:m-10 pb-4">
-                <div className="grid grid-cols-1 w-full md:grid-cols-2 gap-8 max-w-[1200px]">
-                    <OrderSummary order={currentOrder} currency={currency} />
-                    <OrderPayment order={currentOrder} currency={currency} />
-                </div>
-            </section>
+            <CreateWeb3PaymentContextProvider>
+                <section className="flex items-center justify-center md:mt-32 m-4 md:m-10 pb-4">
+                    <div className="grid grid-cols-1 w-full md:grid-cols-2 gap-8 max-w-[1200px]">
+                        <OrderSummary
+                            order={currentOrder}
+                            currency={currency}
+                        />
+                        <OrderPayment
+                            order={currentOrder}
+                            currency={currency}
+                        />
+                    </div>
+                </section>
+            </CreateWeb3PaymentContextProvider>
         </>
     );
 }

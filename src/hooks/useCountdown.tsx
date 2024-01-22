@@ -9,6 +9,8 @@ interface CountdownHookResult {
 }
 
 const useCountdown = ({ endDate }: Props): CountdownHookResult => {
+    const [timeRemaining, setTimeRemaining] = useState<number>(0);
+
     const calculateTimeRemaining = (): number => {
         const now = new Date();
         const target = new Date(endDate);
@@ -23,13 +25,8 @@ const useCountdown = ({ endDate }: Props): CountdownHookResult => {
         return Math.floor(difference / 1000);
     };
 
-    const initialTimeRemaining =
-        typeof window === "undefined" ? calculateTimeRemaining() : 0;
-
-    const [timeRemaining, setTimeRemaining] =
-        useState<number>(initialTimeRemaining);
-
     useEffect(() => {
+        setTimeRemaining(calculateTimeRemaining());
         // Update the timeRemaining every second
         const interval = setInterval(() => {
             setTimeRemaining(calculateTimeRemaining());

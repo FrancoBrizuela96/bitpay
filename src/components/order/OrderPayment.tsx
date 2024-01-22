@@ -2,9 +2,12 @@ import { useState } from "react";
 import { TimerIcon, CopyIcon, WarningIcon } from "@/components";
 import { Currency, DetailedOrder } from "@/interfaces";
 import { handleCopyToClipboard } from "@/helpers";
+import metamask_image from "@/../public/assets/metamask_image.png";
 import clsx from "clsx";
 import QRCode from "react-qr-code";
 import useCountdown from "@/hooks/useCountdown";
+import Image from "next/image";
+import { useCreateWeb3PaymentContext } from "@/contexts/order-web3-payment";
 
 interface Props {
     order: DetailedOrder;
@@ -15,6 +18,7 @@ export const OrderPayment = ({ order, currency }: Props) => {
     const [paymentMethodSelected, setPaymentMethodSelected] = useState<
         "Smart QR" | "Web 3"
     >("Smart QR");
+    const { requestWeb3Payment } = useCreateWeb3PaymentContext();
     const { timeRemaining } = useCountdown({
         endDate: order.expired_time,
     });
@@ -39,21 +43,42 @@ export const OrderPayment = ({ order, currency }: Props) => {
                         )}>
                         Smart QR
                     </button>
-                    <button
-                        onClick={() => setPaymentMethodSelected("Web 3")}
-                        className={clsx(
-                            "px-3 py-1 rounded-2xl transition-all text-base",
-                            paymentMethodSelected === "Web 3"
-                                ? "bg-blue-700 text-white"
-                                : "bg-slate-100"
-                        )}>
-                        Web 3
-                    </button>
+                    {order.currency_id === "ETH_TEST3" && (
+                        <button
+                            onClick={() => setPaymentMethodSelected("Web 3")}
+                            className={clsx(
+                                "px-3 py-1 rounded-2xl transition-all text-base",
+                                paymentMethodSelected === "Web 3"
+                                    ? "bg-blue-700 text-white"
+                                    : "bg-slate-100"
+                            )}>
+                            Web 3
+                        </button>
+                    )}
                 </div>
-                <QRCode
-                    className="h-48 w-48 rounded-sm shadow-2xl"
-                    value="https://www.instagram.com/aldygallardo/?hl=fr"
-                />
+                {paymentMethodSelected === "Smart QR" ? (
+                    <QRCode
+                        className="h-48 w-48 shadow-2xl p-3 rounded-[10px]"
+                        value="https://www.instagram.com/aldygallardo/?hl=fr"
+                    />
+                ) : (
+                    <button
+                        onClick={() =>
+                            requestWeb3Payment({
+                                destinationAddress: order.address,
+                                amountToSend: String(order.crypto_amount),
+                            })
+                        }
+                        className="h-48 w-48 flex justify-center items-center shadow-md rounded-[10px]">
+                        <Image
+                            src={metamask_image}
+                            width={137}
+                            height={43}
+                            alt="Metamask wallet"
+                        />
+                    </button>
+                )}
+
                 <div className="flex flex-col gap-3 items-center">
                     <p className="flex items-center gap-2">
                         Enviar{" "}

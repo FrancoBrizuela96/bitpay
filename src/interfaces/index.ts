@@ -69,3 +69,19 @@ export interface DetailedOrder {
     url_ok: string;
     url_standby: string;
 }
+
+export interface WindowWithEthereum extends Window {
+    ethereum?: any;
+}
+
+export interface CreateWeb3PaymentContextProps {
+    requestWeb3Payment: ({
+        destinationAddress,
+        amountToSend,
+    }: RequestWeb3PaymentProps) => Promise<void>;
+}
+
+export interface RequestWeb3PaymentProps {
+    destinationAddress: string;
+    amountToSend: string;
+}
