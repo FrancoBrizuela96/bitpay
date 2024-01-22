@@ -8,11 +8,11 @@ Bitpay | Ordenes => https://bitnovo-pay.vercel.app/orders
 
 Rutas de la aplicación:
 
-1 - "/" => Bitpay | Home - Creación de pagos.
-2 - "/orders" => Bitpay | Ordenes - Listado de todas las órdenes realizadas (incluye Links para navegar al pago de la órden).
-3 - "/order/{identifier} => Bitpay | Orden - Pantalla de pago con información detallada para realizar el envio de crypto.
-4 - "/order/failed" => Bitpay | Orden fallida - Pantalla de órden fallida o expirada.
-5 - "/order/completed" => Bitpay | Orden exitosa - Pantalla de órden completa o exitosa.
+1 - "/" => Bitpay | Home - Creación de pagos.  
+2 - "/orders" => Bitpay | Ordenes - Listado de todas las órdenes realizadas (incluye Links para navegar al pago de la órden).  
+3 - "/order/{identifier} => Bitpay | Orden - Pantalla de pago con información detallada para realizar el envio de crypto.  
+4 - "/order/failed" => Bitpay | Orden fallida - Pantalla de órden fallida o expirada.  
+5 - "/order/completed" => Bitpay | Orden exitosa - Pantalla de órden completa o exitosa.  
 
 Funcionamiento de cobros:
 
