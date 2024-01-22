@@ -4,8 +4,11 @@ Correr el proyecto en local:
 
 1 - Descargar/Clonar el proyecto  
 2 - Correr el comando npm install para construir los modulos de node e instalar dependencias  
-3 - Correr el comando npm run dev  
-4 - Ingresar a la url localhost:3000 en el navegador para utilizar
+3 - Crear archivo .env.local con las siguientes claves:  
+ NEXT_PUBLIC_X_DEVICE_ID={"your_public_x_device_id"}  
+ NEXT_PUBLIC_BASE_URL="http://localhost:3000"  
+4 - Correr el comando npm run dev  
+5 - Ingresar a la url localhost:3000 en el navegador para utilizar
 
 NOTA:
 
